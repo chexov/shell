@@ -1,0 +1,3 @@
+url=$(echo "$1" | sed -e 's!http://!http%3A%2F%2F!')
+w3m "http://www.instapaper.com/m?u=$url" | less
+

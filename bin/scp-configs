@@ -1,0 +1,8 @@
+for server in $*; do
+    scp ~/.xsend ~/.profile ~/.screenrc ~/.vimrc ~/.zshrc ~/.gitconfig "$server:" &
+done
+
+jobs
+
+wait
+

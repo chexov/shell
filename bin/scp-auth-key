@@ -1,0 +1,8 @@
+#!/bin/sh
+set -ue
+server=$1
+key=${2:-~/.ssh/id_rsa.pub}
+AUTH_KEY="`cat ${key}`"
+ssh ${server} "mkdir ~/.ssh > /dev/null 2>&1 | true; echo '${AUTH_KEY}' >> ~/.ssh/authorized_keys; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys; ls -l ~/.ssh/authorized_keys;"
+echo "Okie: ${key} -> ${server}"
+
