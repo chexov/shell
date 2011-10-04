@@ -1,0 +1,14 @@
+#!/bin/sh
+set -ue
+
+dir=$1
+
+( cd ${dir} && git add -A ${dir} && git diff HEAD 2>&1 ) > /tmp/configchange.$$
+
+[ -s "/tmp/configchange.$$" ] && {
+  cat /tmp/configchange.$$
+  cd ${dir} && git commit -m "autocommit `date`" -a 2>&1 > /dev/null
+}
+
+rm "/tmp/configchange.$$"
+
