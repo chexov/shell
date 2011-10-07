@@ -1,1 +1,1 @@
-find . -name \*.py | xargs ctags
+find . -name \*.py | xargs ctags --python-kinds=-i
